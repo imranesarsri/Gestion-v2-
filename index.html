@@ -9,105 +9,96 @@
   </head>
   <body>
     <div class="contenu" id="contenu">
-      <form>
-        <div>
-          <label>Nom :</label><br />
-          <input type="text" class="input" id="Nom" placeholder="Nom" />
-          <p id="erorrNom"></p>
-        </div>
-        <div>
-          <label>Marque :</label><br />
-          <input type="text" class="input" id="Marque" placeholder="Marque" />
-          <p id="erorrMarque"></p>
-        </div>
-        <div>
-          <label>prix :</label><br />
-          <input type="text" class="input" id="Prix" placeholder="prix" />
-          <p id="erorrPrix"></p>
-        </div>
-        <div>
-          <label>date de production :</label><br />
-          <input type="date" class="input" id="Ladate" />
-          <p id="erorrdate"></p>
-        </div>
-        <label>type :</label><br />
-        <select id="Type" class="select" required>
-          <option value="hygiène et toilette">hygiène et toilette</option>
-          <option value="soins esthétiques">soins esthétiques</option>
-          <option value="produits solaires">produits solaires</option>
-          <option value="beauté des mains et des pieds">
-            beauté des mains et des pieds
-          </option>
-          <option value="produits de maquillage">produits de maquillage</option>
-          <option value="entretien capillaires">entretien capillaires</option>
-          <option value="parfums">parfums</option></select
-        ><br />
-        <p id="erorrType"></p>
-        <label>Est en promotion :</label><br />
-        <div class="sepromotion">
-          <div>
-            <input
-              type="radio"
-              value="Oui"
-              class="Promotion"
-              name="promotion"
-              id="Oui"
-            /><label for="Oui">Oui</label>
-          </div>
-          <div>
-            <input
-              type="radio"
-              value="Non"
-              class="Promotion"
-              name="promotion"
-              id="Non"
-            /><label for="Non">Non</label>
-          </div>
-        </div>
-        <p id="erorrPromotion"></p>
-      </form>
-      <button type="submit" id="Ajouter" class="ajouter">Ajoute</button>
-      <button id="Modifier" class="modifier" onclick="submitModifier()">
-        modifier
-      </button>
+        <form>
+            <div>
+                <label>Nom :</label><br />
+                <input type="text" class="input" id="Nom" placeholder="Nom" />
+                <p id="erorrNom"></p>
+            </div>
+            <div>
+                <label>Marque :</label><br />
+                <input type="text" class="input" id="Marque" placeholder="Marque" />
+                <p id="erorrMarque"></p>
+            </div>
+            <div>
+                <label>prix :</label><br />
+                <input type="text" class="input" id="Prix" placeholder="prix" />
+                <p id="erorrPrix"></p>
+            </div>
+            <div>
+                <label>date de production :</label><br />
+                <input type="date" class="input" id="Ladate" />
+                <p id="erorrdate"></p>
+            </div>
+            <label>type :</label><br />
+            <select id="Type" class="select" required>
+                <option selected disabled value="Choisissez dans la liste" class="option_1">~~~ Choisissez dans la liste ~~~</option>
+                <option value="hygiène et toilette">hygiène et toilette</option>
+                <option value="soins esthétiques">soins esthétiques</option>
+                <option value="produits solaires">produits solaires</option>
+                <option value="beauté des mains et des pieds">beauté des mains et des pieds</option>
+                <option value="produits de maquillage">produits de maquillage</option>
+                <option value="entretien capillaires">entretien capillaires</option>
+                <option value="parfums">parfums</option>
+            </select><br />
+            <p id="erorrType"></p>
+            <label>Est en promotion :</label><br />
+            <div class="sepromotion">
+                <div>
+                    <input type="radio" value="Oui" class="Promotion" name="promotion" id="Oui"/>
+                    <label for="Oui">Oui</label>
+                </div>
+                <div>
+                    <input type="radio" value="Non" class="Promotion" name="promotion" id="Non"/>
+                    <label for="Non">Non</label>
+                </div>
+            </div>
+            <p id="erorrPromotion"></p>
+        </form>
+        <button type="submit" id="Ajouter" class="ajouter">Ajoute</button>
+        <button id="Modifier" class="modifier" onclick="submitModifier()">modifier</button>
     </div>
 
-    <div id="pup" class="pup">
-      <h1>SUPPRIMER</h1>
-      <p class="parg-pup">Etes-vous sur de vouloir supprimer cet element</p>
-
-      <div class="button">
-        <button onclick="submitsupprimerr()">Supprimer</button>
-        <button onclick="annule()">Anule</button>
-      </div>
+    <div id="pop" class="pop">
+        <h1>SUPPRIMER</h1>
+        <p class="parg-pop">Etes-vous sur de vouloir supprimer cet element</p>
+        <div class="button">
+            <button onclick="submitsupprimerr()">Supprimer</button>
+            <button onclick="annule()">Anule</button>
+        </div>
     </div>
 
     <div class="ibl_bdy">
-      <table>
-        <thead>
-          <tr>
-            <th>Nom</th>
-            <th>Marque</th>
-            <th>prix</th>
-            <th>date</th>
-            <th>type</th>
-            <th>promotion</th>
-            <th>updet</th>
-            <th>delet</th>
-          </tr>
-        </thead>
-        <tbody id="tbody"></tbody>
-      </table>
+        <table>
+            <thead>
+                  <tr>
+                      <th>Nom</th>
+                      <th>Marque</th>
+                      <th>prix</th>
+                      <th>date</th>
+                      <th>type</th>
+                      <th>promotion</th>
+                      <th>updet</th>
+                      <th>delet</th>
+                      <th>pop-up</th>
+                  </tr>
+              </thead>
+            <tbody id="tbody">
+            </tbody>
+        </table>
+    </div>
+    <div id="alldetails" class="alldetails">
+        <p class="p_pop_2" id="p_allde_1">Nom</p>
+        <p class="p_pop_2" id="p_allde_2">Marque</p>
+        <p class="p_pop_2" id="p_allde_3">prix</p>
+        <p class="p_pop_2" id="p_allde_4">date</p>
+        <p class="p_pop_2" id="p_allde_5">type</p>
+        <p class="p_pop_2" id="p_allde_6">promotion</p>
+        <div id="actualdetails">
+            <button id="btndetails" onclick="butt_non_pop_2()">ok</button>
+        </div>
     </div>
 
-    <!-- <div id="alldetails">
-      <p class="p_alldetails"></p>
-    <div id="actualdetails"> -->
-
-    </div>
-    <button id="btndetails">ok</button>
-    </div>
     <script src="/main/main.js"></script>
-    <!-- <script src="/hhh.js"></script> -->
   </body>
 </html>
