@@ -1,60 +1,52 @@
-
-
-
+let validarray =[]
 
 class Article {
-
-    constructor(nom , Marque , prix ,  date , Type , promotion   ){
-this.nom = nom;
-this.Marque = Marque;
-this.prix = prix;
-this.date = date;
-this.Type = Type;
-this.promotion = promotion;
-
+constructor(nom , Marque , prix , date , Type , promotion){
+    this.nom = nom;
+    this.Marque = Marque;
+    this.prix = prix;
+    this.date = date;
+    this.Type = Type;
+    this.promotion = promotion;
     }
 
-    details(){
 
-
-
-alert( this.nom + "  " +  this.Marque + "  " +  this.prix + "  " +  this.date + "  " +  this.Type + "  " +  this.promotion )
-
-    }
-
+// function pop-up 2
+details(){
+    document.getElementById('alldetails').style=' display: block';
+    document.getElementById("p_allde_1").innerHTML = `le nom is : ${this.nom}`
+    document.getElementById("p_allde_2").innerHTML = `le Marque is : ${this.Marque}`
+    document.getElementById("p_allde_3").innerHTML = `le prix is : ${this.prix}`
+    document.getElementById("p_allde_4").innerHTML = `le date is : ${this.date}`
+    document.getElementById("p_allde_5").innerHTML = `le Type is : ${this.Type}`
+    document.getElementById("p_allde_6").innerHTML = `le promotion is : ${this.promotion}`
+}
 }
 
 
+// function display none pop-up 2
+function butt_non_pop_2(){
+    document.getElementById('alldetails').style=' display: none';
+}
 
 
-
-
-
-
+// verifez que la localStorage est vide ou pleine
 if(localStorage.Dataarray != null){
-
     var Dataarray = JSON.parse(localStorage.Dataarray) ;
-
-
 } else {
-
     var Dataarray = [];
-
 }
-
 
 draw();
 
 
-
-let validarray =[]
-
+// function validation
 function validation(){
+
     validarray.length = 0 
+
     // la validation de nom
-
 let RegexNom = /^[a-zA-Z-\s]+$/;
-
 if(Nom.value.length === 0){
     document.getElementById("erorrNom").innerHTML = "ce champ obligatoir (superur a 2 caracteres)"
     document.getElementById("Nom").style =`border: 2px red solid;`
@@ -75,9 +67,7 @@ if(Nom.value.length === 0){
 }
 
 // la validation de marque 
-
 let validMrque = /^[a-zA-Z-\s]+$/;
-
 if(Marque.value.length === 0){
     document.getElementById("erorrMarque").innerHTML = "ce champ obligatoir (superur a 2 caracteres)"
     document.getElementById("Marque").style =`border: 2px red solid;`
@@ -98,9 +88,7 @@ if(Marque.value.length === 0){
 }
 
 // la validation de prix 
-
 let validPrix = /^[0-9]+\$?\£?\.?[0-9]+\$?\£?$/;
-
 if(Prix.value.length === 0){
     document.getElementById("erorrPrix").innerHTML = "ce champ obligatoir (superur a 2 caracteres)"
     document.getElementById("Prix").style =`border: 2px red solid;`
@@ -116,7 +104,6 @@ if(Prix.value.length === 0){
 }
 
 // La validation de la date
-
 if (Ladate.value.length === 0) {
     document.getElementById("erorrdate").innerHTML="ce champ obligatoir";
     document.getElementById("Ladate").style=`border: red 2px solid`;
@@ -127,7 +114,6 @@ if (Ladate.value.length === 0) {
 }
 
 // La validation de la type
-
 let Type = document.getElementById("Type").value
 
 if(Type == "Choisissez dans la liste"){
@@ -140,31 +126,25 @@ if(Type == "Choisissez dans la liste"){
 }
 
 // La validation de la promotion
-
 let promotion  = document.getElementsByClassName("Promotion");
-
 if(promotion [0].checked === false && promotion [1].checked == false){
     document.getElementById("erorrPromotion").innerHTML="ce champ obligatoir";
 }else{
     document.getElementById("erorrPromotion").innerHTML="";
     validarray.push(true)
 }
-
 console.log(validarray)
 
 
 // push true dans un array
-
 if(validarray.length == 6 ){
     return true 
 } else {
     return false
 }
-
 }
 
 // functin draw un table
-
 function draw(){
     document.getElementById('tbody').innerHTML=""
 for(i=0 ; i<Dataarray.length ; i++) {
@@ -177,10 +157,13 @@ for(i=0 ; i<Dataarray.length ; i++) {
     <td>${Dataarray[i].promotion}</td>
     <td><button onclick='modifier(${i})' id="modifi_table">modifier</button></td>
     <td><button onclick='supprimer(${i})' id="supprimer_table">supprimer</button></td>
+    <td><button onclick='afichi_pop_2(${i})' id="afichi_pop_2">pop</button></td>
+
+
     `
 }
 }
-
+// function vides les input
 function vide(){
     Nom.value ="";
     Marque.value ="";
@@ -191,6 +174,8 @@ function vide(){
     document.querySelector('form').promotion [1].checked = false
 }
 
+
+// function suppremier border rouge
 function border(){
     document.getElementById("Nom").style =`border: none;`
     document.getElementById("Marque").style =`border: none;`
@@ -199,45 +184,32 @@ function border(){
     document.getElementById("Type").style=`border: none`;
 }
 
-// Ajouter
-
+// Ajouter les information dons table
 Ajouter.onclick =function(){
     if(validation()){
 
-        let newdata = new Article(Nom.value , Marque.value , Prix.value ,  Ladate.value , document.getElementById('Type').value , document.querySelector('form').promotion.value )
-
+        let newdata =
+        new Article(
+        Nom.value,
+        Marque.value,
+        Prix.value, 
+        Ladate.value,
+        document.getElementById('Type').value,
+        document.querySelector('form').promotion.value
+        )
         newdata.details();
-
         Dataarray.push(newdata )
         draw()
         vide()
         border()
-        console.log(Dataarray)
 
-
-
-
-        localStorage.setItem('Dataarray', JSON.stringify(Dataarray) );
-
+        localStorage.setItem('Dataarray', JSON.stringify(Dataarray));
 }
 }
 
 
 
-
-function supprimer(){
-
-    document.getElementById('pup').style='display:inline-block'
-    document.getElementById("contenu").style.filter="blur(5px)"
-
-
-
-
-
-
-
-}
-
+// function ajouter les informations dans les input
 function modifier(index){
     document.getElementById('Modifier').style='display:block',
     document.getElementById('Ajouter').style='display:none',
@@ -250,13 +222,10 @@ function modifier(index){
     document.querySelector('form').promotion.value = Dataarray[index].promotion 
     document.getElementById("Modifier").setAttribute("onclick",`submitModifier(${index})`) 
 
-
-
-
 }
 
 
-
+// function Modifier les information
 function submitModifier(index){
     document.getElementById('Modifier').style='display:none'
     document.getElementById('Ajouter').style='display:block'
@@ -271,30 +240,46 @@ function submitModifier(index){
 
     localStorage.setItem('Dataarray', JSON.stringify(Dataarray) );
 
+    let newdata =
+    new Article(Nom.value ,
+        Marque.value ,
+        Prix.value , 
+        Ladate.value ,
+        document.getElementById('Type').value ,
+        document.querySelector('form').promotion.value )
 
+    newdata.details();
+
+}
+
+
+function afichi_pop_2() {
+
+    ggg()
+
+    
+}
+
+
+// function display block pop-up 1
+function supprimer(){
+    document.getElementById('pop').style='display:inline-block'
+    document.getElementById("contenu").style.filter="blur(5px)"
 }
 
 
 // button supprimier
 function submitsupprimerr(index) {
-
     Dataarray.splice(index , 1)
     draw()
-    document.getElementById('pup').style=' display: none';
+    document.getElementById('pop').style=' display: none';
     document.getElementById("contenu").style.filter="blur(0)"
 
-
     localStorage.setItem('Dataarray', JSON.stringify(Dataarray) );
-
-
-
 }
 
 // button anuule
-
 function annule() {
-    document.getElementById('pup').style=' display: none';
+    document.getElementById('pop').style=' display: none';
     document.getElementById("contenu").style.filter="blur(0)"
 }
-
-
