@@ -6,25 +6,20 @@
 body {
     color: white;
     background-image: linear-gradient(to right,#000000,#ff0000);
+    
 }
 .contenu {
-    width: 80%;
-    padding-left: 10%;
+    width: 95%;
     margin-bottom: 20px;
     position: relative;
+    padding: 50px 0 0 20%;
 }
 table {
     width: 80%;
-    /* margin-left: 10%;
-    margin-bottom: 20px; */
-
 }
 .ibl_bdy {
-    margin-left: 10px;
+    margin-left: 15%;
 }
-/* h1 {
-    padding: 40px 0 20px;
-} */
 p {
     color: red;
     padding: 10px 0;
@@ -34,7 +29,6 @@ table {
     border-collapse: collapse;
     width: 80%;
 }
-
 td, th {
     text-align: left;
     padding: 8px;
@@ -73,10 +67,6 @@ select {
     padding: 9px 40px;
 
 }
-/* .promotion {
-    display: flex;
-    gap: 30px;
-} */
 .ajouter {
     padding: 8px 40px;
     border-radius: 15px;
@@ -148,7 +138,7 @@ select {
     margin-right: 10px;
 }
 
-.pup{
+.pop{
     position: absolute;
     background-color: black;
     color: white;
@@ -163,7 +153,10 @@ select {
     display: none;
 
 }
-.parg-pup {
+.parg-pop {
+    color:white;
+}
+.p_pop_2 {
     color:white;
 }
 .button {
@@ -181,21 +174,24 @@ button:hover {
     background-color: #555;
     transition: 0.5s;
 }
+.option_1{
+    color: red;
+    font-size: small;
+}
 
-
-
-/* details */
-/* #alldetails {
-    display: none;
-    position: fixed;
-    top: 200px;
-    left: 35%;
-    height: 200px;
-    width: 400px;
-    background-color: rgb(7, 5, 5);
-    color: white;
-    padding: 15px;
-    border-radius: 4px;
+.alldetails {
+    background-color: #9b0fa8d9;
+    width: 25%;
     text-align: center;
-    box-shadow:20px 20px 40px 0 rgb(0, 0, 0);
-} */
+    border-radius: 20px;
+    position: relative;
+    bottom: 76vh;
+    left: 40%;
+    padding: 10px;
+    display: none;
+}
+.afichi_pop_2 {
+    color: white;
+    background-color: #000000;
+    display: block;
+}
