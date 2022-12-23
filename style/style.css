@@ -6,7 +6,6 @@
 body {
     color: white;
     background-image: linear-gradient(to right,#000000,#ff0000);
-    
 }
 .contenu {
     width: 95%;
@@ -65,7 +64,6 @@ select {
     border-radius: 9px;
     text-align: center;
     padding: 9px 40px;
-
 }
 .ajouter {
     padding: 8px 40px;
