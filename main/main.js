@@ -31,10 +31,14 @@ function butt_non_pop_2(){
 
 
 // verifez que la localStorage est vide ou pleine
+var Dataarray = [];
 if(localStorage.Dataarray != null){
-    var Dataarray = JSON.parse(localStorage.Dataarray) ;
+    Dataarray = JSON.parse(localStorage.Dataarray) ;
+    //  Dataarray.sort((a,b) => a.nom.localCompare(b.nom));
+
+    Dataarray.sort((a,b) => (a.nom > b.nom) ? 1 : ((b.nom > a.nom) ? -1 : 0));
 } else {
-    var Dataarray = [];
+    Dataarray = [];
 }
 
 draw();
@@ -157,9 +161,6 @@ for(i=0 ; i<Dataarray.length ; i++) {
     <td>${Dataarray[i].promotion}</td>
     <td><button onclick='modifier(${i})' id="modifi_table">modifier</button></td>
     <td><button onclick='supprimer(${i})' id="supprimer_table">supprimer</button></td>
-    <td><button onclick='afichi_pop_2(${i})' id="afichi_pop_2">pop</button></td>
-
-
     `
 }
 }
@@ -190,7 +191,7 @@ Ajouter.onclick =function(){
 
         let newdata =
         new Article(
-        Nom.value,
+        nom.value,
         Marque.value,
         Prix.value, 
         Ladate.value,
@@ -211,6 +212,9 @@ Ajouter.onclick =function(){
 
 // function ajouter les informations dans les input
 function modifier(index){
+
+setTimeout (blabna,500, )
+
     document.getElementById('Modifier').style='display:block',
     document.getElementById('Ajouter').style='display:none',
     console.log(Dataarray[index].nom)
@@ -221,7 +225,10 @@ function modifier(index){
     document.getElementById('Type').value = Dataarray[index].Type 
     document.querySelector('form').promotion.value = Dataarray[index].promotion 
     document.getElementById("Modifier").setAttribute("onclick",`submitModifier(${index})`) 
-
+}
+// onclick button modifier = scrollTo le debut de la page
+function blabna(){
+    scrollTo({left:0,top:0,behavior:"smooth"})
 }
 
 
@@ -235,29 +242,22 @@ function submitModifier(index){
     Dataarray[index].date = Ladate.value
     Dataarray[index].Type = document.getElementById('Type').value 
     Dataarray[index].promotion = document.querySelector('form').promotion.value
+
+    Dataarray.sort((a,b) => (a.nom > b.nom) ? 1 : ((b.nom > a.nom) ? -1 : 0));
+
     draw()
     vide()
 
     localStorage.setItem('Dataarray', JSON.stringify(Dataarray) );
 
-    let newdata =
-    new Article(Nom.value ,
-        Marque.value ,
-        Prix.value , 
-        Ladate.value ,
-        document.getElementById('Type').value ,
-        document.querySelector('form').promotion.value )
-
-    newdata.details();
 
 }
 
 
 function afichi_pop_2() {
 
-    ggg()
 
-    
+    scrollTo({left:0,top:0,behavior:"smooth"})
 }
 
 
