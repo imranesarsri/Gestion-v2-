@@ -191,7 +191,7 @@ Ajouter.onclick =function(){
 
         let newdata =
         new Article(
-        nom.value,
+        Nom.value,
         Marque.value,
         Prix.value, 
         Ladate.value,
@@ -213,7 +213,7 @@ Ajouter.onclick =function(){
 // function ajouter les informations dans les input
 function modifier(index){
 
-setTimeout (blabna,500, )
+setTimeout (scrool,500, )
 
     document.getElementById('Modifier').style='display:block',
     document.getElementById('Ajouter').style='display:none',
@@ -227,7 +227,7 @@ setTimeout (blabna,500, )
     document.getElementById("Modifier").setAttribute("onclick",`submitModifier(${index})`) 
 }
 // onclick button modifier = scrollTo le debut de la page
-function blabna(){
+function scrool(){
     scrollTo({left:0,top:0,behavior:"smooth"})
 }
 
